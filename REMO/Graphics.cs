@@ -338,6 +338,7 @@ namespace REMO_Engine_V1._01
         {
             UpdateSceneEvent = null;
             DrawSceneEvent = null;
+            PausedSceneEvent = null;
             MusicBox.StopSong();
         }
 

@@ -229,51 +229,18 @@ namespace REMO_Engine_V1._01
 
         protected void CustomInit()
         {
+            GAMEOPTION.Init_DamExample();
         }
 
         protected void CustomUpdate()
         {
-            /*
-            if(User.Pressing(Keys.Up))
-            {
-                Repository.sqr.MoveByVector(new Point(0, -1), 5);
-            }
-            if (User.Pressing(Keys.Down))
-            {
-                Repository.sqr.MoveByVector(new Point(0, 1), 5);
-            }
-            if (User.Pressing(Keys.Left))
-            {
-                Repository.sqr.MoveByVector(new Point(-1, 0), 5);
-            }
-            if (User.Pressing(Keys.Right))
-            {
-                Repository.sqr.MoveByVector(new Point(1, 0), 5);
-            }
-            */           
-            User.ArrowKeyPAct((p) =>
-            {
-                Repository.sqr.MoveByVector(p, 5);
-            });
+
 
         }
         protected void CustomDraw()
         {
-            Painter.OpenCanvas(
-                () =>
-                {
-                    Painter.ClearBackground(Color.Black);
-              
-                    Fader.DrawAll();
-                    Repository.sqr.Draw(Color.DarkMagenta);//
-                    if(User.Pressing(Keys.LeftControl,Keys.Q))
-                    {
-                        StandAlone.DrawString(Fader.Flicker(100).ToString(), Cursor.Pos+new Point(0,20), Color.White,Color.Red);
-
-                    }
-                    Cursor.Draw(Color.White);
-                });
-
+            GAMEOPTION.CustomDraw_DamExample();
+      
 
         }
     }
@@ -285,9 +252,28 @@ namespace REMO_Engine_V1._01
     {
         // 게임의 옵션을 지정합니다. 씬의 초기화와는 개념이 다릅니다.
 
-        public static string[] NameSpaces = { "REMO" }; //작업중인 에셋들의 네임스페이스 이름들을 적어넣습니다. 나중에 에셋을 분류하기 용이합니다.
+        public static string[] NameSpaces = { "REMO", "DAMEXAM" }; //작업중인 에셋들의 네임스페이스 이름들을 적어넣습니다. 나중에 에셋을 분류하기 용이합니다.
 
+        public static void Init_DamExample()
+        {
+            Game1.graphics.PreferredBackBufferHeight = 1000;
+            Game1.graphics.PreferredBackBufferWidth = 800;
+            Game1.graphics.ApplyChanges();
 
+            Projector.Load(REMOEngine.Examples.DamExam_MainScene.scn);
+        }
+
+        public static void CustomDraw_DamExample()
+        {
+            Game1.Painter.OpenCanvas(REMOEngine.Examples.DamExam_MainScene.scn.Camera, () =>
+            {
+                Cursor.Draw(Color.Black);
+                if (User.Pressing(Keys.LeftControl, Keys.Q))
+                {
+                    StandAlone.DrawString(Cursor.Pos.X + "," + Cursor.Pos.Y, Cursor.Pos + new Point(30, 0), Color.White, Color.Black);
+                }
+            });
+        }
 
 
 
