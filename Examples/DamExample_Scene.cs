@@ -23,7 +23,6 @@ namespace REMOEngine.Examples
     {
 
 
-
         //Space for Scene properties
 
         private static Gfx2D PhoneScreen = new Gfx2D("PhoneScreen00", new Point(0,0), 0.5f);
