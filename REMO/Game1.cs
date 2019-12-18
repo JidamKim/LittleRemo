@@ -269,6 +269,7 @@ namespace REMO_Engine_V1._01
                     if(User.Pressing(Keys.LeftControl,Keys.Q))
                     {
                         StandAlone.DrawString(Fader.Flicker(100).ToString(), Cursor.Pos+new Point(0,20), Color.White,Color.Red);
+
                     }
                     Cursor.Draw(Color.White);
                 });
